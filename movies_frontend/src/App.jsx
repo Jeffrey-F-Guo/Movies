@@ -38,7 +38,7 @@ const App = () => {
             }
 
             setMovieList(data.results || []);
-            console.log(data.results)
+            console.log(data)
             // throw new Exception("failed to get movies");
         } catch(error) {
             console.error(`Error fetching movies: ${error}`);  
@@ -48,8 +48,26 @@ const App = () => {
         }
     }
 
+    const fetchGenre = async () => {
+        try {
+            const endpoint = `${API_BASE_URL}/genre/movie/list?api_key=${API_KEY}`
+            const response = await fetch(endpoint, API_OPTIONS)
+
+            if (!response.ok) {
+                throw new Error('Failed to get genres')
+            }
+
+            const data = await response.json()
+            console.log(data)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(()=>{
         fetchMovies();
+        fetchGenre();
     }, [])
 
     return (
