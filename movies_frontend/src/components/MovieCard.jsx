@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MovieCard = ({movie: 
-    {title, vote_average, poster_path, release_date, original_language} 
+    {title, vote_average, poster_path, release_date, original_language, genre_ids}, genreMap 
 }) => {
     return (
         <div className='movie-card'>
@@ -16,6 +16,8 @@ const MovieCard = ({movie:
                     </span>
                     <span>●</span>
                     <p className='year'>{release_date?release_date.split('-')[0]:'N/A'}</p>
+                    <span>●</span>
+                    <p className='genre'>{genreMap && genreMap.has(genre_ids[0])?genreMap.get(genre_ids[0]):'NA'}</p>
                 </div>
             </div>
             

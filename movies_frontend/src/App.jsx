@@ -15,6 +15,34 @@ const API_OPTIONS = {
     }
 }
 
+const idToGenre = [
+    {id: 28, name: 'Action'},
+    {id: 12, name: 'Adventure'},
+    {id: 16, name: 'Animation'},
+    {id: 35, name: 'Comedy'},
+    {id: 80, name: 'Crime'},
+    {id: 99, name: 'Documentary'},
+    {id: 18, name: 'Drama'},
+    {id: 10751, name: 'Family'},
+    {id: 14, name: 'Fantasy'},
+    {id: 36, name: 'History'},
+    {id: 27, name: 'Horror'},
+    {id: 10402, name: 'Music'},
+    {id: 9648, name: 'Mystery'},
+    {id: 10749, name: 'Romance'},
+    {id: 878, name: 'Sci-Fi'},
+    {id: 10770, name: 'TV Movie'},
+    {id: 53, name: 'Thriller'},
+    {id: 10752, name: 'War'},
+    {id: 37, name: 'Western'},
+]
+    
+const genreMap = new Map()
+idToGenre.forEach((genre) => {
+    genreMap.set(genre.id,genre.name)
+})
+
+
 const App = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -67,7 +95,6 @@ const App = () => {
 
     useEffect(()=>{
         fetchMovies();
-        fetchGenre();
     }, [])
 
     return (
@@ -90,7 +117,7 @@ const App = () => {
                     ): (
                         <ul>
                             {movieList.map((movie) => (
-                                <MovieCard key={movie.id} movie={movie}/>
+                                <MovieCard key={movie.id} movie={movie} genreMap={genreMap}/>
                             ))}
                         </ul>
                     )}
