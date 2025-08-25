@@ -1,11 +1,11 @@
 import React from 'react'
 
-const MovieCard = ({movie: 
-    {title, vote_average, poster_path, release_date, original_language, genre_ids}, genreMap 
+const MovieCard = ({movie:
+    {title, vote_average, poster_path, release_date, genre_ids}, genreMap
 }) => {
     return (
         <div className='movie-card'>
-            <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'} 
+            <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.svg'}
               alt={title}/>
             <div>
                 <h3 className=" mt-4">{title}</h3>
@@ -20,7 +20,7 @@ const MovieCard = ({movie:
                     <p className='genre'>{genreMap && genreMap.has(genre_ids[0])?genreMap.get(genre_ids[0]):'NA'}</p>
                 </div>
             </div>
-            
+
         </div>
     )
 }

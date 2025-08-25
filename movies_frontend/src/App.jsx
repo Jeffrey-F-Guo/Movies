@@ -131,7 +131,6 @@ const App = () => {
 
                     {errorMsg && <p className="text-red-500">{errorMsg}</p>}
                 </section>
-                <h1>{searchTerm}</h1>
 
             </div>
 
